@@ -1,7 +1,7 @@
 'use strict';
 
 var ul = document.createElement('ul');
-var container = document.getElementById('container');
+var container = document.getElementById('container-watchlist');
 container.appendChild(ul);
 
 var fetchWatchlist = function(response){
