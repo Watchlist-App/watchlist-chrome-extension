@@ -1,7 +1,26 @@
 /* Will be compiled down to a single stylesheet with your sass files */
 
+* {
+outline: 0;
+}
+
 html {
     /* Defaults css for cssmin process */
+}
+
+body {
+	margin: 0!important;
+	padding: 0!important;
+	width: 410px;
+	float: left;
+	margin: 0 20px 0 0;
+	background: #f0f0ed;
+	border: 2px solid #fff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #343434;
+	font: 13px "Segoe UI Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .wathclist-btn-google  {
@@ -46,14 +65,36 @@ html {
 	outline: 0;
 }
 
-#container-watchlist h1 {
-	font-size: 16px;
+#container h1 {
+	font-size: 26px;
+	margin-left: 150px;
 }
 
-#container-watchlist ul li {
+#container h4 {
+	font-size: 13px;
+	width: 100px;
+	max-height: 35px;
+	overflow: hidden;
+}
+
+#container ul li {
 	list-style-type: none;
+	display: inline-block;
+	height: 210px;
+	overflow: hidden;
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	padding-top: 10px;
+	padding-left: 10px;
 }
 
-#container-watchlist h4 {
-	font-size: 12px;
+#container ul li:nth-child(3),
+#container ul li:nth-child(6) {
+	border-right: transparent;
+}
+
+#container ul li:nth-child(4),
+#container ul li:nth-child(5),
+#container ul li:nth-child(6) {
+	border-bottom: transparent;
 }
