@@ -10,11 +10,12 @@ button.addEventListener('click', function(){
 });
 
 document.addEventListener("DOMNodeInserted", function(e) {
-  var box = document.querySelector('.kno-ecr-pt');
-  var caption = document.querySelector('._ps');
-  if (box && caption) {
+  if (e.target.id == "rhs"){
+    var movieTitleDiv = e.target.querySelector('.kno-ecr-pt');
+    var caption = e.target.querySelector('._ps');
     if (caption.innerHTML.match(/Film/)){
-        box.appendChild(button);
+      movieTitleDiv.appendChild(button);
+      movie.title = movieTitleDiv.innerHTML;
     }
   }
 }, false);
