@@ -9,16 +9,12 @@ button.addEventListener('click', function(){
   console.log('adding to watchlist');
 });
 
-var waitForBox = setInterval(checkForElement, 150);
-
-function checkForElement() {
+document.addEventListener("DOMNodeInserted", function(e) {
   var box = document.querySelector('.kno-ecr-pt');
   var caption = document.querySelector('._ps');
   if (box && caption) {
-    clearInterval (waitForBox);
     if (caption.innerHTML.match(/Film/)){
         box.appendChild(button);
     }
   }
-}
-
+}, false);
