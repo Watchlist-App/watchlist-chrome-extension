@@ -3,7 +3,7 @@
 var button = document.createElement('input');
 button.type = 'button';
 button.value = 'Add to watchlist';
-button.className = 'wathclist-btn-google';
+button.className = 'watchlist-btn-google';
 
 button.addEventListener('click', function(){
   console.log('adding to watchlist');
