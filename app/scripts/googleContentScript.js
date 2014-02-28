@@ -13,9 +13,12 @@ var waitForBox = setInterval(checkForElement, 150);
 
 function checkForElement() {
   var box = document.querySelector('.kno-ecr-pt');
-  if (box) {
+  var caption = document.querySelector('._ps');
+  if (box && caption) {
     clearInterval (waitForBox);
-    box.appendChild(button);
+    if (caption.innerHTML.match(/Film/)){
+        box.appendChild(button);
+    }
   }
 }
 
