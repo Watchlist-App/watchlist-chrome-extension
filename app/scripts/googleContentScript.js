@@ -5,9 +5,9 @@ button.type = 'button';
 button.value = 'Add to watchlist';
 button.className = 'wathclist-btn-google';
 
-button.onclick = function(){
+button.addEventListener('click', function(){
   console.log('adding to watchlist');
-};
+});
 
 var waitForBox = setInterval(checkForElement, 150);
 

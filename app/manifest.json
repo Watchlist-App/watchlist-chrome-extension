@@ -32,7 +32,20 @@
         "styles/main.css"
       ],
       "js": [
-        "scripts/contentscript.js"
+        "scripts/googleContentScript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "http://www.imdb.com/*"
+      ],
+      "css": [
+        "styles/main.css"
+      ],
+      "js": [
+        "scripts/imdbContentScript.js"
       ],
       "run_at": "document_end",
       "all_frames": false
