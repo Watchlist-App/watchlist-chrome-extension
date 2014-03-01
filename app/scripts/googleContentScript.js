@@ -1,12 +1,14 @@
 'use strict';
 
+var movie = {};
+
 var button = document.createElement('input');
 button.type = 'button';
 button.value = 'Add to watchlist';
 button.className = 'watchlist-btn-google';
 
 button.addEventListener('click', function(){
-  console.log('adding to watchlist');
+  console.log('adding ' + movie.title + ' year:' + movie.year + ' to watchlist');
 });
 
 document.addEventListener("DOMNodeInserted", function(e) {
@@ -14,8 +16,9 @@ document.addEventListener("DOMNodeInserted", function(e) {
     var movieTitleDiv = e.target.querySelector('.kno-ecr-pt');
     var caption = e.target.querySelector('._ps');
     if (caption.innerHTML.match(/Film/)){
-      movieTitleDiv.appendChild(button);
       movie.title = movieTitleDiv.innerHTML;
+      movie.year = caption.innerHTML.match(/(\d+)/)[0];
+      movieTitleDiv.appendChild(button);
     }
   }
 }, false);
