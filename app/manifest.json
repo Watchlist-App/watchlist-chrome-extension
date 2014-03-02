@@ -32,6 +32,7 @@
         "styles/button.css"
       ],
       "js": [
+        "scripts/utils.js",
         "scripts/googleContentScript.js"
       ],
       "run_at": "document_end",
@@ -45,6 +46,7 @@
         "styles/button.css"
       ],
       "js": [
+        "scripts/utils.js",
         "scripts/imdbContentScript.js"
       ],
       "run_at": "document_end",
