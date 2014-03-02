@@ -3,7 +3,6 @@
 var makeRequest = function(url, cb){
   var request = new XMLHttpRequest();
   request.open('GET', url, true);
-
   request.onload = function() {
     if (request.status >= 200 && request.status < 400){
       var response = JSON.parse(request.responseText);
@@ -12,7 +11,6 @@ var makeRequest = function(url, cb){
       console.log('error');
     }
   };
-
   request.send();
 };
 
@@ -30,12 +28,26 @@ var findMovie = function(title, year, cb){
   });
 };
 
-var getWatchlist = function(userId, cb){
+var fetchUser = function(userId, cb){
   var url = 'http://watchlist-koa.herokuapp.com/user/' + userId;
   makeRequest(url, function(response){
-    var watchlist = response.lists.filter(function(list){
-      return list.title === 'watchlist';
-    })[0];
-    cb(watchlist);
+    cb(response);
   });
 };
+
+var createButton = function(user, movieId){
+  var button = document.createElement('input');
+  button.type = 'button';
+  var watchlist = user.lists.filter(function(list){
+    return list.title === 'watchlist';
+  })[0].movies;
+  button.value = watchlist.indexOf(movieId) === -1 ? 'Add to watchlist' : 'In watchlist';
+  button.className = 'watchlist-btn-google';
+  button.addEventListener('click', function(){
+    addMovieToWatchlist(user._id, movieId, function(response){
+      button.value = 'in watchlist';
+    });
+  });
+  return button;
+};
+

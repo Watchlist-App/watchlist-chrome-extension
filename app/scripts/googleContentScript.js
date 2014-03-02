@@ -1,35 +1,29 @@
 'use strict';
 
-var movie = {};
-var userId = '529ed16dc7e98b020066f901';
+var userId = '53134ae78b42c302008eed55';
 
-var createButton = function(){
-  var button = document.createElement('input');
-  button.type = 'button';
-  button.value = 'Add to watchlist';
-  button.className = 'watchlist-btn-google';
-  button.addEventListener('click', function(){
-    addMovieToWatchlist(userId, movie.id, function(response){
-      console.log(movie.id);
-      button.value = 'in watchlist';
-      console.log(response);
-    });
-  });
-  return button;
-};
-
-document.addEventListener('DOMNodeInserted', function(e) {
-  if (e.target.id === 'rhs'){
-    var movieTitleDiv = e.target.querySelector('.kno-ecr-pt');
-    var caption = e.target.querySelector('._ps');
-    if (caption.innerHTML.match(/Film/)){
-      movie.title = movieTitleDiv.innerHTML;
-      movie.year = caption.innerHTML.match(/(\d+)/)[0];
-      findMovie(movie.title, movie.year, function(response){
-        movie.id = response.id;
-        var button = createButton();
+var injectButton = function(box){
+  var movieTitleDiv = box.querySelector('.kno-ecr-pt');
+  var caption = box.querySelector('._ps');
+  if (caption.innerHTML.match(/Film/)){
+    var movieTitle = movieTitleDiv.innerHTML;
+    var movieYear = caption.innerHTML.match(/(\d+)/)[0];
+    findMovie(movieTitle, movieYear, function(movie){
+      fetchUser(userId, function(user){
+        var button = createButton(user, movie.id);
         movieTitleDiv.appendChild(button);
       });
-    }
+    });
+  }
+};
+
+var box = document.querySelector('#rhs');
+if (box){
+  injectButton(box);
+}
+
+document.addEventListener('DOMNodeInserted', function(event) {
+  if (event.target.id === 'rhs'){
+    injectButton(event.target);
   }
 }, false);
