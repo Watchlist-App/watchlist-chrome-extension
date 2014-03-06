@@ -4,7 +4,8 @@ var userId = '53134ae78b42c302008eed55';
 
 var injectButton = function(box){
   var movieTitleDiv = box.querySelector('.kno-ecr-pt');
-  var caption = box.querySelector('._ps') || box.querySelector('._bs');
+  var caption = movieTitleDiv.nextSibling;
+  // var caption = box.querySelector('._ps') || box.querySelector('._bs');
   if (caption.innerHTML.match(/Film/)){
     var movieTitle = movieTitleDiv.innerHTML;
     var movieYear = caption.innerHTML.match(/(\d+)/)[0];
