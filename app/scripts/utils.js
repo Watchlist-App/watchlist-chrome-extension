@@ -10,7 +10,7 @@ makeRequest = function(url, cb) {
    request = new XMLHttpRequest();
    request.open('GET', url, true);
    request.onload = function() {
-      if (!request.status >= 400) {
+      if (!(request.status >= 400)) {
          response = JSON.parse(request.responseText);
          cb(response);
       } else {
